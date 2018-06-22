@@ -3,7 +3,7 @@ function newGame () {
 		global: {
 		},
 		job: [ "Farmer", "Hunter", "Woodcutter", "Iron Miner", "Stone Miner"
-				, "Carpenter", "Innkeeper", "Bartender", "Waiter", "ZZZ", "ZZ1"
+				, "Carpenter", "Innkeeper", "Bartender", "Waiter"
 		],
 	};
 	

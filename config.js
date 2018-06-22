@@ -5,6 +5,8 @@ function newGame () {
 		job: [ "Farmer", "Hunter", "Woodcutter", "Iron Miner", "Stone Miner"
 //				, "Carpenter", "Innkeeper", "Bartender", "Waiter"
 		],
+		area: [ "Plain", "Grassland", "Forest", "Hill", "Mountain"
+		],
 	};
 	
 	return toReturn;

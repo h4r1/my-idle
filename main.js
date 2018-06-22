@@ -86,8 +86,14 @@ function addUITable(groupElemName)
 {
     var s="";
 	
-	myjob = game.job.sort();
-	myjob.forEach(function(item) {
+	if (groupElemName == "job")
+		mylist = game.job.sort();
+	if (groupElemName == "area")
+		mylist = game.area.sort();
+
+//	document.getElementById('debugContent').innerHTML = mylist;
+
+	mylist.forEach(function(item) {
 		s+= "<tr><td width=150>" + item + "</td><td>0</td></tr>"
 	});
 
@@ -99,7 +105,9 @@ function addUITable(groupElemName)
 
 
 function startGame() {
+	var x = addUITable("area");
 	var x = addUITable("job");
+	loadGame();
 }
 
 

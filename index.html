@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="assets/css/mainx.css" />
+		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" type="text/css" href="interface.css" />
+	</head>
+
+	<body>
+
+<div id="debug">DEBUG:
+<p><div id="debugContent"></div></p>
+</div>
+
+
+<div id="control">
+  <button id="save" onclick="javascript:saveGame()" >Save</button>
+  <button id="load" onclick="javascript:loadGame()" >Load</button>
+</div>
+
+	
+<div id="top">
+	<p>
+	Cookies: <span id="cookies">0</span><br>
+	Chocolate: <span id="chocolate">0</span>
+	</p>
+</div>
+
+<!-- Tab pages -->
+<div class="mytabH">
+  <button id="button1" onclick="javascript:activateTab(event, 'page1')" class="tabButton small active" >Tab 1</button>
+  <button id="button2" onclick="javascript:activateTab(event, 'page2')" class="tabButton small" >Tab 2</button>
+</div>
+
+<div id="mytabD">
+	<div class="tabContent" id="page1" style="display: block;">Page 1</div>
+	<div class="tabContent" id="page2" style="display: none;">Page 2</div>
+</div>	
+
+<div>
+<h3>Job</h3>
+<table id="job">
+</table>
+</div>
+
+
+		<script type="text/javascript" src="config.js"></script>	
+		<script type="text/javascript" src="main.js"></script>	
+	
+	</body>
+</html>

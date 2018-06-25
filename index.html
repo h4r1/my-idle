@@ -1,6 +1,5 @@
 <html>
 	<head>
-		<link rel="stylesheet" href="assets/css/mainx.css" />
 		<link rel="stylesheet" href="main.css" />
 		<link rel="stylesheet" type="text/css" href="interface.css" />
 	</head>
@@ -26,6 +25,7 @@
 </div>
 
 <!-- Tab pages -->
+<table width="50%"><tr><td>
 <div class="mytabH">
   <button id="button1" onclick="javascript:activateTab(event, 'page1')" class="tabButton small active" >Area</button>
   <button id="button2" onclick="javascript:activateTab(event, 'page2')" class="tabButton small" >Job</button>
@@ -33,25 +33,23 @@
 
 <div id="mytabD">
 	<div class="tabContent" id="page1" style="display: block;">
-<div>
-<table id="area">
-</table>
-</div>	
+		<div>
+		<table id="area">
+		</table>
+		</div>	
 	</div>
 	
 	<div class="tabContent" id="page2" style="display: none;">
-<div>
-<table id="job">
-</table>
-</div>
+		<div>
+		<table id="job">
+		</table>
+		</div>
 	</div>
 </div>	
+</td></tr></table>
 
-
-
-
-		<script type="text/javascript" src="config.js"></script>	
-		<script type="text/javascript" src="main.js"></script>	
+<script type="text/javascript" src="config.js"></script>	
+<script type="text/javascript" src="main.js"></script>	
 	
 	</body>
 </html>

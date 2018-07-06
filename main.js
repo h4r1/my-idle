@@ -59,6 +59,14 @@ function loadGame() {
 };
 
 
+function deleteGame() {
+	var really = confirm('Really delete save?'); //Check the player really wanted to do that.
+	if (really){
+		document.cookie = ['save', '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.', window.location.host.toString()].join('');
+		localStorage.removeItem('save');
+		alert("Delete save done!");
+	}	
+};
 
 function getResourceRowText(purchaseObj)
 {

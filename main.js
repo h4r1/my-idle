@@ -32,7 +32,7 @@ function addButton(evt, lQty) {
   gameData.population = gameData.population + gameData.addQty;
   gameData.divine = gameData.divine + gameData.addQty*2;
   refreshUI();
-  
+
 };
 
 
@@ -64,7 +64,7 @@ function saveGame() {
 	};
 
 	localStorage.setItem("save", JSON.stringify(save));
-	document.getElementById('debugContent').innerHTML = JSON.stringify(save);
+//	document.getElementById('debugContent').innerHTML = JSON.stringify(save);
 
 
 	alert("Save done!");
@@ -83,7 +83,7 @@ function loadGame() {
 	gameData.divine = save.divine;
 	gameData.addQty = save.addQty;
 	
-	document.getElementById('debugContent').innerHTML = gameData.addQty;
+//	document.getElementById('debugContent').innerHTML = gameData.addQty;
 	
 	refreshUI();
 	addButtonRefreshUI();

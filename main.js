@@ -1,6 +1,6 @@
 var gameData = { 
 	population: 0, divine: 0 
-	, addQty: 0
+	, addQty: 1
 };
 
 function refreshUI() {
@@ -8,43 +8,35 @@ function refreshUI() {
   document.getElementById('divine').innerHTML = gameData.divine;
 };
 
+function addButtonRefreshUI() {
+	buttonList = document.getElementsByClassName("btnAdd");
+	for (i = 0; i < buttonList.length; i++) {
+		buttonList[i].className = buttonList[i].className.replace(" active", "");
+	}	
 
-function addButton(evt, pageId) {
-  var tabCtrl = document.getElementById('mytabD');
-  var pageToActivate = document.getElementById(pageId);
+	curBtn = document.getElementById('add'+ gameData.addQty);
+	curBtn.className += " active";  
+}
 
+function addButton(evt, lQty) {
+/*
   buttonList = document.getElementsByClassName("btnAdd");
   for (i = 0; i < buttonList.length; i++) {
         buttonList[i].className = buttonList[i].className.replace(" active", "");
   }
-
-	
-  switch (evt.currentTarget.id) {
-	case "add1":
-		gameData.addQty = 1;
-		break;
-	case "add10":
-		gameData.addQty = 10;
-		break;
-	case "add25":
-		gameData.addQty = 25;
-		break;
-	case "add100":
-		gameData.addQty = 100;
-		break;
-  }
+  evt.currentTarget.className += " active";  
+*/
+  gameData.addQty = lQty;
+  addButtonRefreshUI();
+  
   gameData.population = gameData.population + gameData.addQty;
   gameData.divine = gameData.divine + gameData.addQty*2;
   refreshUI();
-  
-  evt.currentTarget.className += " active";
   
 };
 
 
 function activateTab(evt, pageId) {
-
-
   var tabCtrl = document.getElementById('mytabD');
   var pageToActivate = document.getElementById(pageId);
 
@@ -67,10 +59,12 @@ function activateTab(evt, pageId) {
 function saveGame() {
 	var save = {
 		population: gameData.population,
-		divine: gameData.divine
+		divine: gameData.divine,
+		addQty: gameData.addQty
 	};
 
-	localStorage.setItem("save",JSON.stringify(save));
+	localStorage.setItem("save", JSON.stringify(save));
+	document.getElementById('debugContent').innerHTML = JSON.stringify(save);
 
 
 	alert("Save done!");
@@ -87,8 +81,12 @@ function loadGame() {
 	
 	gameData.population = save.population;
 	gameData.divine = save.divine;
+	gameData.addQty = save.addQty;
+	
+	document.getElementById('debugContent').innerHTML = gameData.addQty;
 	
 	refreshUI();
+	addButtonRefreshUI();
 };
 
 

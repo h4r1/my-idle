@@ -62,7 +62,7 @@ table tr:nth-child(odd) {background: #333}
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    border-bottom: 1px dotted white;
 }
 
 .tooltip .tooltiptext {
@@ -97,3 +97,45 @@ table tr:nth-child(odd) {background: #333}
     visibility: visible;
     opacity: 1;
 }
+
+.btnControl {
+    background-color: black;
+	border-radius: 8px;	
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 0px;
+    cursor: pointer;
+}
+
+.btnAdd {
+/*	float: left;	 /* creating group button */
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    font-size: 14px;
+	outline: none;	
+    cursor: pointer;
+}
+
+.btnAdd:hover {
+    background-color: #444;
+    color: white;
+}
+.btnAdd:active {
+  background-color: #888;
+  box-shadow: 0 5px #666;
+  transform: translateX(4px);
+}
+.btnAdd.active {
+  background-color: #888;
+}
+
+
+</style>

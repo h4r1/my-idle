@@ -1,16 +1,49 @@
-var gameData = { cookies: 0, chocolate: 0 };
+var gameData = { 
+	population: 0, divine: 0 
+	, addQty: 0
+};
 
 function refreshUI() {
-  document.getElementById('cookies').innerHTML = gameData.cookies;
-  document.getElementById('chocolate').innerHTML = gameData.chocolate;
+  document.getElementById('population').innerHTML = gameData.population;
+  document.getElementById('divine').innerHTML = gameData.divine;
+};
+
+
+function addButton(evt, pageId) {
+  var tabCtrl = document.getElementById('mytabD');
+  var pageToActivate = document.getElementById(pageId);
+
+  buttonList = document.getElementsByClassName("btnAdd");
+  for (i = 0; i < buttonList.length; i++) {
+        buttonList[i].className = buttonList[i].className.replace(" active", "");
+  }
+
+	
+  switch (evt.currentTarget.id) {
+	case "add1":
+		gameData.addQty = 1;
+		break;
+	case "add10":
+		gameData.addQty = 10;
+		break;
+	case "add25":
+		gameData.addQty = 25;
+		break;
+	case "add100":
+		gameData.addQty = 100;
+		break;
+  }
+  gameData.population = gameData.population + gameData.addQty;
+  gameData.divine = gameData.divine + gameData.addQty*2;
+  refreshUI();
+  
+  evt.currentTarget.className += " active";
+  
 };
 
 
 function activateTab(evt, pageId) {
-  gameData.cookies = gameData.cookies + 1;
-  gameData.chocolate = gameData.chocolate + 2;
 
-  refreshUI();
 
   var tabCtrl = document.getElementById('mytabD');
   var pageToActivate = document.getElementById(pageId);
@@ -33,8 +66,8 @@ function activateTab(evt, pageId) {
 
 function saveGame() {
 	var save = {
-		cookies: gameData.cookies,
-		chocolate: gameData.chocolate
+		population: gameData.population,
+		divine: gameData.divine
 	};
 
 	localStorage.setItem("save",JSON.stringify(save));
@@ -52,8 +85,8 @@ function loadGame() {
 		return;
 	}
 	
-	gameData.cookies = save.cookies;
-	gameData.chocolate = save.chocolate;
+	gameData.population = save.population;
+	gameData.divine = save.divine;
 	
 	refreshUI();
 };

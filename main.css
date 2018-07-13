@@ -129,13 +129,28 @@ table tr:nth-child(odd) {background: #333}
     color: white;
 }
 .btnAdd:active {
-  background-color: #888;
-  box-shadow: 0 5px #666;
-  transform: translateX(4px);
+	background-color: #888;
+	box-shadow: 0 5px #666;
+	transform: translateX(4px);
 }
 .btnAdd.active {
-  background-color: #888;
+	background-color: #888;
 }
 
+.btnJob  {
+	background-color: #222;
+	color: white;
+	border: none;
+	width: 100%;
+	padding: 0px 10px;
+	margin: 0px;
+	text-align: left;	
+}
+
+.btnJob:active {
+	background-color: #888;
+	box-shadow: 0 5px #666;
+	transform: translateX(4px);
+}
 
 </style>

@@ -130,22 +130,44 @@ function addUITable(groupElemName)
 	if (groupElemName == "area")
 		mylist = game.area.sort();
 
-//	document.getElementById('debugContent').innerHTML = mylist;
 
 	mylist.forEach(function(item) {
 		s+= "<tr><td width=150>" + item + "</td><td>0</td></tr>"
 	});
 
 	var groupElem = document.getElementById(groupElemName);
+	document.getElementById('debugContent').innerHTML = "<pre>"+groupElem.innerHTML+"</pre>";
+	document.getElementById('debugContent').innerHTML = groupElem.innerHTML;
     groupElem.innerHTML += s;
 //    groupElem.onmousedown = onBulkEvent;
+
+
     return groupElem;
 }
 
 
+function addJobUITable()
+{
+    var s="";
+
+	mylist = game.job.sort();
+	mylist.forEach(function(item) {
+		s+= "<tr><td width=150><button class='btnJob'>" + item + "</button></td><td>0</td></tr>"
+	});
+
+	var groupElem = document.getElementById("job");
+	document.getElementById('debugContent').innerHTML = "<pre>"+groupElem.innerHTML+"</pre>";
+	document.getElementById('debugContent').innerHTML = groupElem.innerHTML;
+    groupElem.innerHTML += s;
+	
+	return groupElem;
+}
+
+
+
 function startGame() {
 	var x = addUITable("area");
-	var x = addUITable("job");
+	var x = addJobUITable();
 	loadGame();
 }
 

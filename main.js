@@ -1,7 +1,24 @@
 var gameData = { 
 	population: 0, divine: 0 
 	, addQty: 1
+	, job: {}
 };
+
+
+function test() {
+	gameData.job["Farmer"] = { qty: 123, };
+	gameData.job["Woodcutter"] = { qty: 7, };
+	var x = addJobUITable();
+	
+/*
+	gameData.job[1].name = 'Farmer';
+	gameData.job[1].qty = 35;
+
+	gameData.job[2].name = 'Woodcutter';
+	gameData.job[2].qty = 5;
+*/	
+}
+
 
 function refreshUI() {
   document.getElementById('population').innerHTML = gameData.population;
@@ -18,22 +35,6 @@ function addButtonRefreshUI() {
 	curBtn.className += " active";  
 }
 
-function addButton(evt, lQty) {
-/*
-  buttonList = document.getElementsByClassName("btnAdd");
-  for (i = 0; i < buttonList.length; i++) {
-        buttonList[i].className = buttonList[i].className.replace(" active", "");
-  }
-  evt.currentTarget.className += " active";  
-*/
-  gameData.addQty = lQty;
-  addButtonRefreshUI();
-  
-  gameData.population = gameData.population + gameData.addQty;
-  gameData.divine = gameData.divine + gameData.addQty*2;
-  refreshUI();
-
-};
 
 
 function activateTab(evt, pageId) {
@@ -57,6 +58,7 @@ function activateTab(evt, pageId) {
 
 
 function saveGame() {
+/*
 	var save = {
 		population: gameData.population,
 		divine: gameData.divine,
@@ -64,7 +66,9 @@ function saveGame() {
 	};
 
 	localStorage.setItem("save", JSON.stringify(save));
-//	document.getElementById('debugContent').innerHTML = JSON.stringify(save);
+*/	
+	localStorage.setItem("save", JSON.stringify(gameData));
+	document.getElementById('debugContent').innerHTML = JSON.stringify(gameData);
 
 
 	alert("Save done!");
@@ -78,15 +82,20 @@ function loadGame() {
 		alert("Load game error!");
 		return;
 	}
-	
+/*	
 	gameData.population = save.population;
 	gameData.divine = save.divine;
 	gameData.addQty = save.addQty;
+*/
+	gameData = save;
 	
-//	document.getElementById('debugContent').innerHTML = gameData.addQty;
 	
 	refreshUI();
 	addButtonRefreshUI();
+	var x = addJobUITable();
+
+	document.getElementById('debugContent').innerHTML = JSON.stringify(gameData);
+	
 };
 
 
@@ -150,17 +159,36 @@ function addJobUITable()
 {
     var s="";
 
-	mylist = game.job.sort();
-	mylist.forEach(function(item) {
-		s+= "<tr><td width=150><button class='btnJob'>" + item + "</button></td><td>0</td></tr>"
-	});
-
+	
+	for (let key in gameData.job) {
+		s+= "<tr><td width=150><button class='btnJob' onclick='addJobQty(" + '"' + key + '"' + ")'>" + key 
+			+ "</button></td><td align=right width=50>" + gameData.job[key].qty 
+			+ "</td></tr>"
+	}
+	
 	var groupElem = document.getElementById("job");
-	document.getElementById('debugContent').innerHTML = "<pre>"+groupElem.innerHTML+"</pre>";
-	document.getElementById('debugContent').innerHTML = groupElem.innerHTML;
-    groupElem.innerHTML += s;
+    groupElem.innerHTML = s;
 	
 	return groupElem;
+}
+
+
+
+
+function addButton(evt, lQty) {
+
+  gameData.addQty = lQty;
+  addButtonRefreshUI();
+  
+//  gameData.population = gameData.population + gameData.addQty;
+//  gameData.divine = gameData.divine + gameData.addQty*2;
+  refreshUI();
+};
+
+
+function addJobQty(jobName) {
+	gameData.job[jobName].qty += gameData.addQty;
+	var x = addJobUITable();
 }
 
 

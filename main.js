@@ -161,8 +161,8 @@ function addJobUITable()
 
 	
 	for (let key in gameData.job) {
-		s+= "<tr><td width=150><button class='btnJob' onclick='addJobQty(" + '"' + key + '"' + ")'>" + key 
-			+ "</button></td><td align=right width=50>" + gameData.job[key].qty 
+		s+= "<tr><td width=150><div class='btnJob' onclick='addJobQty(" + '"' + key + '"' + ")'>" + key 
+			+ "</div></td><td align=right width=50>" + gameData.job[key].qty 
 			+ "</td></tr>"
 	}
 	

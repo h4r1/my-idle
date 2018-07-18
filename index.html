@@ -19,26 +19,27 @@ isDebug = false;
 </script>
 
 <!-- Resources to spend -->	
-<div id="top" class="rounded" style="background-color: #444; width: 500px">
+<div id="top" class="rounded" style="background-color: #444;">
 	<p>
 	Divine Power: <span id="divine">0</span><br>
 	Population: <span id="population">0</span>
 	</p>
-</div><p></p>
+</div>
 
 
 <!-- Add buttons -->	
 <div id="add" class="rounded" style="background-color: #000;">
 <button class="btnAdd active" id="add1" onclick="javascript:addButton(event, 1)">+1</button>
 <button class="btnAdd" id="add10" onclick="javascript:addButton(event, 10)">+10</button>
-<button class="btnAdd" id="add25" onclick="javascript:addButton(event, 25)">+25</button>
-<button class="btnAdd" id="add100" onclick="javascript:addButton(event, 100)" style="float:none;">+100</button>
-</div><p></p>
+<button class="btnAdd" id="add50" onclick="javascript:addButton(event, 50)">+50</button>
+<button class="btnAdd" id="add100" onclick="javascript:addButton(event, 100)"">+100</button>
+<button class="btnAdd" id="add1000" onclick="javascript:addButton(event, 1000)" style="float:none;">+1000</button>
+</div>
 
 
 
 <!-- Tab pages -->
-<div id="pages" class="rounded" style="background-color: #444; display: inline-block;">
+<div id="pages" class="rounded" style="background-color: #444;">
 	<table width="100%"><tr><td>
 	<div class="mytabH">
 	  <button id="button1" onclick="javascript:activateTab(event, 'page1')" class="tabButton small active" >Area</button>
@@ -70,7 +71,7 @@ isDebug = false;
 		</div>
 	</div>	
 	</td></tr></table>
-</div><p></p>
+</div>
 
 
 <!-- Control buttons -->	
@@ -79,14 +80,14 @@ isDebug = false;
   <button id="load" class="btnControl" onclick="javascript:loadGame()" >Load</button>
   <button id="delete" class="btnControl" onclick="javascript:deleteGame()" >Delete</button>
   <button id="Test" class="btnControl" onclick="test()" style="float:none">Test</button>
-</div><p></p>
+</div>
 
 
 
 <div class="tooltip">
 Hover over me
   <span class="tooltiptext">Tooltip text</span>
-</div><p></p>
+</div>
 
 
 

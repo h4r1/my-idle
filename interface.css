@@ -1,12 +1,13 @@
 /* Style the tab */
 .mytabH {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    border: 1px solid #888;
+    background-color: #666;
 }
 
 .mytabH button {
     background-color: inherit;
+    color: white;
     float: left;
     border: none;
     outline: none;
@@ -16,7 +17,7 @@
 }
 
 .mytabH button:hover {
-    background-color: #888;
+    background-color: #444;
 }
 
 .mytabH button.active {
@@ -27,9 +28,11 @@
 
 
 .tabContent {
+    background-color: #333;
     display: none;
 	height: 200px;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #888;
     border-top: none;
+	overflow: auto;
 }

@@ -1,17 +1,43 @@
-var gameData = { cookies: 0, chocolate: 0 };
-
-function refreshUI() {
-  document.getElementById('cookies').innerHTML = gameData.cookies;
-  document.getElementById('chocolate').innerHTML = gameData.chocolate;
+var gameData = { 
+	population: 0, divine: 0 
+	, addQty: 1
+	, job: {}
 };
 
 
+function test() {
+	gameData.job["Farmer"] = { qty: 123, };
+	gameData.job["Woodcutter"] = { qty: 7, };
+	var x = addJobUITable();
+	
+/*
+	gameData.job[1].name = 'Farmer';
+	gameData.job[1].qty = 35;
+
+	gameData.job[2].name = 'Woodcutter';
+	gameData.job[2].qty = 5;
+*/	
+}
+
+
+function refreshUI() {
+  document.getElementById('population').innerHTML = gameData.population;
+  document.getElementById('divine').innerHTML = gameData.divine;
+};
+
+function addButtonRefreshUI() {
+	buttonList = document.getElementsByClassName("btnAdd");
+	for (i = 0; i < buttonList.length; i++) {
+		buttonList[i].className = buttonList[i].className.replace(" active", "");
+	}	
+
+	curBtn = document.getElementById('add'+ gameData.addQty);
+	curBtn.className += " active";  
+}
+
+
+
 function activateTab(evt, pageId) {
-  gameData.cookies = gameData.cookies + 1;
-  gameData.chocolate = gameData.chocolate + 2;
-
-  refreshUI();
-
   var tabCtrl = document.getElementById('mytabD');
   var pageToActivate = document.getElementById(pageId);
 
@@ -32,12 +58,17 @@ function activateTab(evt, pageId) {
 
 
 function saveGame() {
+/*
 	var save = {
-		cookies: gameData.cookies,
-		chocolate: gameData.chocolate
+		population: gameData.population,
+		divine: gameData.divine,
+		addQty: gameData.addQty
 	};
 
-	localStorage.setItem("save",JSON.stringify(save));
+	localStorage.setItem("save", JSON.stringify(save));
+*/	
+	localStorage.setItem("save", JSON.stringify(gameData));
+	document.getElementById('debugContent').innerHTML = JSON.stringify(gameData);
 
 
 	alert("Save done!");
@@ -51,11 +82,20 @@ function loadGame() {
 		alert("Load game error!");
 		return;
 	}
+/*	
+	gameData.population = save.population;
+	gameData.divine = save.divine;
+	gameData.addQty = save.addQty;
+*/
+	gameData = save;
 	
-	gameData.cookies = save.cookies;
-	gameData.chocolate = save.chocolate;
 	
 	refreshUI();
+	addButtonRefreshUI();
+	var x = addJobUITable();
+
+	document.getElementById('debugContent').innerHTML = JSON.stringify(gameData);
+	
 };
 
 
@@ -99,24 +139,66 @@ function addUITable(groupElemName)
 	if (groupElemName == "area")
 		mylist = game.area.sort();
 
-//	document.getElementById('debugContent').innerHTML = mylist;
 
 	mylist.forEach(function(item) {
 		s+= "<tr><td width=150>" + item + "</td><td>0</td></tr>"
 	});
 
 	var groupElem = document.getElementById(groupElemName);
+	document.getElementById('debugContent').innerHTML = "<pre>"+groupElem.innerHTML+"</pre>";
+	document.getElementById('debugContent').innerHTML = groupElem.innerHTML;
     groupElem.innerHTML += s;
 //    groupElem.onmousedown = onBulkEvent;
+
+
     return groupElem;
 }
 
 
+function addJobUITable()
+{
+    var s="";
+
+	
+	for (let key in gameData.job) {
+		s+= "<tr><td width=150><div class='btnJob' onclick='addJobQty(" + '"' + key + '"' + ")'>" + key 
+			+ "</div></td><td align=right width=100>" + gameData.job[key].qty 
+			+ "</td></tr>"
+	}
+	
+	var groupElem = document.getElementById("job");
+    groupElem.innerHTML = s;
+	
+	return groupElem;
+}
+
+
+
+
+function addButton(evt, lQty) {
+
+  gameData.addQty = lQty;
+  addButtonRefreshUI();
+  
+//  gameData.population = gameData.population + gameData.addQty;
+//  gameData.divine = gameData.divine + gameData.addQty*2;
+  refreshUI();
+};
+
+
+function addJobQty(jobName) {
+	gameData.job[jobName].qty += gameData.addQty;
+	var x = addJobUITable();
+}
+
+
+
 function startGame() {
 	var x = addUITable("area");
-	var x = addUITable("job");
+	var x = addJobUITable();
 	loadGame();
 }
 
 
-startGame()
+startGame();
+

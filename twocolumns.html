@@ -1,0 +1,94 @@
+<html>
+<head>
+<style>
+
+body {
+	padding: 0;
+	margin: 0;
+	color: white;
+	background-color: #222;
+}
+
+div { 
+	background-color: inherit;
+	padding: 10px;
+	margin: 10px;
+}
+
+#wrapper {
+	position: relative;
+	padding: inherit;
+	margin: inherit;
+	height: 99%;
+	border: 1px solid gray;
+}
+
+#wrapleft {
+	position: relative;
+	border: 1px solid white;
+	width: 48%;
+	height: 95%;
+	margin: 0;
+	overflow: auto;
+}
+
+#wrapright {
+	position: absolute;
+	right: 0;
+	top: 0;
+	border: 1px solid yellow;
+	width: 48%;
+	height: 95%;
+	margin: 0;
+	overflow: auto;
+}
+
+
+.col1 {
+	background-color: #444;
+}
+
+.col2 {
+	background-color: #666;
+}
+
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+
+	<div id="wrapleft">
+		<div id="div1" class="col1">
+		Area 1<br>
+		This is the resource area
+		</div>
+
+		<div id="div3" class="col1">
+		Area 3
+		</div>		
+	</div>
+
+	
+	
+	
+	
+	<div id="wrapright">
+		<div id="div2" class="col2">
+		Area 2
+		</div>
+
+		<div id="div4" class="col2">
+		Area 4
+		</div>
+
+		<div id="div4" class="col2">
+		Area 6
+		</div>		
+
+	</div>
+
+	
+</div>
+</body>
+</html>

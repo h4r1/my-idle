@@ -15,20 +15,35 @@ body {
 	background-color: #444;
 }
 
+#header {
+	text-align: center;
+	background-color: #aaa;
+	padding: inherit;
+}
+
 #left {
+	float: left;
+	padding: inherit;
 	background-color: #666;
+	width: 10%;
 }
 
 #right {
+	float: right;
+	padding: inherit;
 	background-color: #888;
+	width: 10%;
 }
 
 #content {
+	padding: inherit;
 	background-color: #fff;
 	color: black;
 }
 
 #footer {
+	clear: both;
+	padding: inherit;
 	background-color: black;
 }
 
@@ -37,13 +52,18 @@ body {
 
 <body>
 <div id="wrapper">
-
+<div id="header"><h1>My Title</h1></div>
 <div id="left">
 Left Menu
+<ul>
+	<li>Index</li>
+	<li>Search</li>
+	<li>About</li>
+</ul>
 </div>
 
 <div id="right">
-Right Menu
+This is the Right Menu
 </div>
 
 <div id="content">

@@ -20,10 +20,8 @@ isDebug = false;
 
 <!-- Resources to spend -->	
 <div id="top" class="rounded" style="background-color: #444;">
-	<p>
 	Divine Power: <span id="divine">0</span><br>
 	Population: <span id="population">0</span>
-	</p>
 </div>
 
 
@@ -32,7 +30,7 @@ isDebug = false;
 <button class="btnAdd active" id="add1" onclick="javascript:addButton(event, 1)">+1</button>
 <button class="btnAdd" id="add10" onclick="javascript:addButton(event, 10)">+10</button>
 <button class="btnAdd" id="add50" onclick="javascript:addButton(event, 50)">+50</button>
-<button class="btnAdd" id="add100" onclick="javascript:addButton(event, 100)"">+100</button>
+<button class="btnAdd" id="add100" onclick="javascript:addButton(event, 100)">+100</button>
 <button class="btnAdd" id="add1000" onclick="javascript:addButton(event, 1000)" style="float:none;">+1000</button>
 </div>
 
@@ -75,7 +73,7 @@ isDebug = false;
 
 
 <!-- Control buttons -->	
-<div id="control" class="rounded" style="background-color: #000;">
+<div id="control" class="rounded" style="background-color: #000; position: fixed; bottom: 10; margin: 0; border: 1px solid cyan;">
   <button id="save" class="btnControl" onclick="javascript:saveGame()" >Save</button>
   <button id="load" class="btnControl" onclick="javascript:loadGame()" >Load</button>
   <button id="delete" class="btnControl" onclick="javascript:deleteGame()" >Delete</button>

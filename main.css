@@ -165,6 +165,7 @@ table tr:nth-child(odd) {background: #333}
 	border-radius: 10px;	
 	padding: 8px;
 	width: 50%;
-	margin: 8px;
+	margin: 5px;
+	min-width: 500px;
 }
 </style>

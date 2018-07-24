@@ -18,74 +18,95 @@ isDebug = false;
 		document.getElementById("debug").style.display = "";
 </script>
 
-<!-- Resources to spend -->	
-<div id="top" class="rounded" style="background-color: #444;">
-	Divine Power: <span id="divine">0</span><br>
-	Population: <span id="population">0</span>
-</div>
-
-
-<!-- Add buttons -->	
-<div id="add" class="rounded" style="background-color: #000;">
-<button class="btnAdd active" id="add1" onclick="javascript:addButton(event, 1)">+1</button>
-<button class="btnAdd" id="add10" onclick="javascript:addButton(event, 10)">+10</button>
-<button class="btnAdd" id="add50" onclick="javascript:addButton(event, 50)">+50</button>
-<button class="btnAdd" id="add100" onclick="javascript:addButton(event, 100)">+100</button>
-<button class="btnAdd" id="add1000" onclick="javascript:addButton(event, 1000)" style="float:none;">+1000</button>
-</div>
-
-
-
-<!-- Tab pages -->
-<div id="pages" class="rounded" style="background-color: #444;">
-	<table width="100%"><tr><td>
-	<div class="mytabH">
-	  <button id="button1" onclick="javascript:activateTab(event, 'page1')" class="tabButton small active" >Area</button>
-	  <button id="button2" onclick="javascript:activateTab(event, 'page2')" class="tabButton small" >Job</button>
-	  <button id="button3" onclick="javascript:activateTab(event, 'page3')" class="tabButton small" >Person</button>
-	</div>
-
-
-	<div id="mytabD">
-		<div class="tabContent" id="page1" style="display: block;">
-			<div>
-			<table id="area">
+<div id="wrapper">
+	<div id="wrapleft">
+		<!-- Resources to spend -->	
+		<div class="rounded" style="background-color: #444;">
+			<table id="resource" style="font-size: 90%;">
 			</table>
+		</div>
+
+		<div id="top" class="rounded" style="background-color: #444;">
+			Divine Power: <span id="divine">0</span><br>
+			Population: <span id="population">0</span>
+		</div>
+
+
+		<!-- Add buttons -->	
+		<div id="add" class="rounded" style="background-color: #000;">
+		<button class="btnAdd active" id="add1" onclick="javascript:addButton(event, 1)">+1</button>
+		<button class="btnAdd" id="add10" onclick="javascript:addButton(event, 10)">+10</button>
+		<button class="btnAdd" id="add50" onclick="javascript:addButton(event, 50)">+50</button>
+		<button class="btnAdd" id="add100" onclick="javascript:addButton(event, 100)">+100</button>
+		<button class="btnAdd" id="add1000" onclick="javascript:addButton(event, 1000)" style="float:none;">+1000</button>
+		</div>
+
+
+
+		<!-- Tab pages -->
+		<div id="pages" class="rounded" style="background-color: #444;">
+			<table width="100%"><tr><td>
+			<div class="mytabH">
+			  <button id="button1" onclick="javascript:activateTab(event, 'page1')" class="tabButton small active" >Area</button>
+			  <button id="button2" onclick="javascript:activateTab(event, 'page2')" class="tabButton small" >Job</button>
+			  <button id="button3" onclick="javascript:activateTab(event, 'page3')" class="tabButton small" >Person</button>
+			</div>
+
+
+			<div id="mytabD">
+				<div class="tabContent" id="page1" style="display: block;">
+					<div>
+					<table id="area">
+					</table>
+					</div>	
+				</div>
+				
+				<div class="tabContent" id="page2" style="display: none;">
+					<div>
+					<table id="job" style="font-size: 90%;">
+					</table>
+					</div>
+				</div>
+
+				<div class="tabContent" id="page3" style="display: none;">
+					<div>
+					<table id="person">
+					</table>
+					</div>
+				</div>
 			</div>	
+			</td></tr></table>
 		</div>
+
+
+		<!-- Control buttons -->	
+
+
+
+		<div class="tooltip">
+		Hover over me
+		  <span class="tooltiptext">Tooltip text</span>
+		</div>
+
+
+	</div>	<!-- wrapleft -->
+	
+	<div id="wrapright">
+
+		<div style="font-weight: bold; background-color: black; text-align: center; border-radius: 8px 8px 0 0; border: 1px solid gray; padding: 3px;">
+			Message
+		</div>
+		<div style="border: 1px solid gray; border-top: none;" id="message"></div>
 		
-		<div class="tabContent" id="page2" style="display: none;">
-			<div>
-			<table id="job">
-			</table>
-			</div>
+	</div>	<!-- wrapright -->
+	
+		<div id="control" style="border-radius: 5px; background-color: #000; position: absolute; bottom: 5px; width: inherit; border: 1px solid cyan;">
+		  <button id="save" class="btnControl" onclick="javascript:saveGame()" >Save</button>
+		  <button id="load" class="btnControl" onclick="javascript:loadGame()" >Load</button>
+		  <button id="delete" class="btnControl" onclick="javascript:deleteGame()" >Delete</button>
+		  <button id="Test" class="btnControl" onclick="test()" style="float:none">Init</button>
 		</div>
-
-		<div class="tabContent" id="page3" style="display: none;">
-			<div>
-			<table id="person">
-			</table>
-			</div>
-		</div>
-	</div>	
-	</td></tr></table>
-</div>
-
-
-<!-- Control buttons -->	
-<div id="control" class="rounded" style="background-color: #000; position: fixed; bottom: 10; margin: 0; border: 1px solid cyan;">
-  <button id="save" class="btnControl" onclick="javascript:saveGame()" >Save</button>
-  <button id="load" class="btnControl" onclick="javascript:loadGame()" >Load</button>
-  <button id="delete" class="btnControl" onclick="javascript:deleteGame()" >Delete</button>
-  <button id="Test" class="btnControl" onclick="test()" style="float:none">Init</button>
-</div>
-
-
-
-<div class="tooltip">
-Hover over me
-  <span class="tooltiptext">Tooltip text</span>
-</div>
+</div>	<!-- wrapper -->
 
 
 

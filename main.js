@@ -2,14 +2,22 @@ var gameData = {
 	population: 0, divine: 0 
 	, addQty: 1
 	, job: {}
+	, resource: { 
+		divine: { caption: "Divine Power", qty: 1000, }
+		, population: { caption: "Population", qty: 20, }
+	}
 };
+
+
 
 
 function test() {
 	gameData.job["Farmer"] = { qty: 123, };
 	gameData.job["Woodcutter"] = { qty: 7, };
-	var x = addJobUITable();
-	
+	var x = genJobUITable();
+
+	gameData.resource["Production"] = { caption: "Production", qty: 125, }
+	genResourceUITable();
 /*
 	gameData.job[1].name = 'Farmer';
 	gameData.job[1].qty = 35;
@@ -19,11 +27,33 @@ function test() {
 */	
 }
 
+function message(msg, type) {
+	if (!type)
+		type = 0;	// default color
+	switch(type) {
+		case 1:	// warning
+			myStyle = "color:red;";
+			break;
+		case 2:	// highlight
+			myStyle = "color:yellow;";
+			break;
+		default:	
+			myStyle = "";
+	}
+	
+		
+	var messageBody = document.getElementById('message');	
+	messageBody.innerHTML += "<span style='" + myStyle + "'>" + msg + "</span><br>";
+	// scroll to bottom
+	messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+};
+
 
 function refreshUI() {
   document.getElementById('population').innerHTML = gameData.population;
   document.getElementById('divine').innerHTML = gameData.divine;
 };
+
 
 function addButtonRefreshUI() {
 	buttonList = document.getElementsByClassName("btnAdd");
@@ -71,7 +101,7 @@ function saveGame() {
 	document.getElementById('debugContent').innerHTML = JSON.stringify(gameData);
 
 
-	alert("Save done!");
+	message("Game is saved.");
 };
 
 
@@ -79,8 +109,8 @@ function saveGame() {
 function loadGame() {
 	var save = JSON.parse(localStorage.getItem("save"));
 	if (save == null) {
-		alert("Load game error!");
-		return;
+		message("Load game error!", 1);	// 1=red
+		return false;
 	}
 /*	
 	gameData.population = save.population;
@@ -92,10 +122,11 @@ function loadGame() {
 	
 	refreshUI();
 	addButtonRefreshUI();
-	var x = addJobUITable();
+	var x = genJobUITable();
 
 	document.getElementById('debugContent').innerHTML = JSON.stringify(gameData);
-	
+	message("Save game loaded.");
+	return true;
 };
 
 
@@ -104,30 +135,9 @@ function deleteGame() {
 	if (really){
 		document.cookie = ['save', '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.', window.location.host.toString()].join('');
 		localStorage.removeItem('save');
-		alert("Delete save done!");
+		message("Save game deleted!", 1);	// 1=red
 	}	
 };
-
-function getResourceRowText(purchaseObj)
-{
-    // Make sure to update this if the number of columns changes.
-    if (!purchaseObj) { return "<tr class='purchaseRow'><td colspan='6'/>&nbsp;</tr>"; }
-
-    var objId = purchaseObj.id;
-    var objName = purchaseObj.getQtyName(0);
-    var s = "<tr id='"+objId+"Row' class='purchaseRow' data-target='"+objId+"'>";
- 
-    s += "<td><button data-action='increment'>"+purchaseObj.verb+" "+objName+"</button></td>";
-    s += "<td class='itemname'>"+objName+": </td>";
-    s += "<td class='number'><span data-action='display'>0</span></td>";
-    s += "<td class='icon'><img src='images/"+objId+".png' class='icon icon-lg' alt='"+objName+"'/></td>";
-    s += "<td class='number'>(Max: <span id='max"+objId+"'>200</span>)</td>";
-    s += "<td class='number net'><span data-action='displayNet'>0</span>/s</td>";
-
-    s += "</tr>";
-
-    return s;
-}
 
 
 function addUITable(groupElemName)
@@ -155,7 +165,7 @@ function addUITable(groupElemName)
 }
 
 
-function addJobUITable()
+function genJobUITable()
 {
     var s="";
 
@@ -173,6 +183,22 @@ function addJobUITable()
 }
 
 
+function genResourceUITable()
+{
+    var s="";
+
+	
+	for (let key in gameData.resource) {
+		s+= "<tr><td width=150><div class='x'>" + gameData.resource[key].caption
+			+ "</div></td><td align=right width=100>" + gameData.resource[key].qty 
+			+ "</td></tr>"
+	}
+	
+	var groupElem = document.getElementById("resource");
+    groupElem.innerHTML = s;
+	
+	return groupElem;
+}
 
 
 function addButton(evt, lQty) {
@@ -188,15 +214,22 @@ function addButton(evt, lQty) {
 
 function addJobQty(jobName) {
 	gameData.job[jobName].qty += gameData.addQty;
-	var x = addJobUITable();
+	var x = genJobUITable();
 }
 
 
+function initGame() {
+	genResourceUITable();
+}
+
 
 function startGame() {
-	var x = addUITable("area");
-	var x = addJobUITable();
-	loadGame();
+//	var x = addUITable("area");
+	var x = genJobUITable();
+	var isOK = loadGame();
+	if (!isOK) {
+		initGame();
+	}
 }
 
 

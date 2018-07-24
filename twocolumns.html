@@ -16,17 +16,23 @@ div {
 }
 
 #wrapper {
-	position: relative;
-	padding: inherit;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 10px;
 	margin: inherit;
-	height: 99%;
+	width: 98%;
+	border-radius: 12px 12px 0 0;
 	border: 1px solid gray;
 }
 
 #wrapleft {
-	position: relative;
+	position: absolute;
 	border: 0px solid white;
-	width: 50%;
+	top: 10px;
+	width: 49%;
 	height: 95%;
 	margin: 0;
 	overflow: auto;
@@ -34,10 +40,10 @@ div {
 
 #wrapright {
 	position: absolute;
-	right: 0;
-	top: 0;
+	right: 10px;
+	top: 10px;
 	border: 0px solid yellow;
-	width: 50%;
+	width: 48%;
 	height: 95%;
 	margin: 0;
 	overflow: auto;
@@ -67,6 +73,7 @@ div {
 		<div id="div3" class="col1">
 		Area 3
 		</div>		
+
 	</div>
 
 	
@@ -85,7 +92,6 @@ div {
 		<div id="div4" class="col2">
 		Area 6
 		</div>		
-
 	</div>
 
 	

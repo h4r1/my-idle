@@ -1,6 +1,6 @@
 var gameData = { 
-	population: 0, divine: 0 
-	, addQty: 1
+//	population: 0, divine: 0 
+	addQty: 1
 	, job: {}
 	, resource: { 
 		divine: { caption: "Divine Power", qty: 1000, }
@@ -106,17 +106,14 @@ function saveGame() {
 
 
 
-function loadGame() {
+function loadGame(noMsg) {
 	var save = JSON.parse(localStorage.getItem("save"));
 	if (save == null) {
-		message("Load game error!", 1);	// 1=red
+		if (!noMsg)
+			message("Load game error!", 1);	// 1=red
 		return false;
 	}
-/*	
-	gameData.population = save.population;
-	gameData.divine = save.divine;
-	gameData.addQty = save.addQty;
-*/
+
 	gameData = save;
 	
 	
@@ -189,7 +186,7 @@ function genResourceUITable()
 
 	
 	for (let key in gameData.resource) {
-		s+= "<tr><td width=150><div class='x'>" + gameData.resource[key].caption
+		s+= "<tr><td width=90><div class='x'>" + gameData.resource[key].caption
 			+ "</div></td><td align=right width=100>" + gameData.resource[key].qty 
 			+ "</td></tr>"
 	}
@@ -226,7 +223,7 @@ function initGame() {
 function startGame() {
 //	var x = addUITable("area");
 	var x = genJobUITable();
-	var isOK = loadGame();
+	var isOK = loadGame(true);
 	if (!isOK) {
 		initGame();
 	}
@@ -234,4 +231,3 @@ function startGame() {
 
 
 startGame();
-

@@ -50,8 +50,11 @@ function message(msg, type) {
 
 
 function refreshUI() {
-  document.getElementById('population').innerHTML = gameData.population;
-  document.getElementById('divine').innerHTML = gameData.divine;
+// no longer innerHTML, but table! 
+//  document.getElementById('population').innerHTML = gameData.population;
+//  document.getElementById('divine').innerHTML = gameData.divine;
+//	document.getElementById('population').innerHTML = gameData.resource['population'].qty; 
+//	document.getElementById('divine').innerHTML = gameData.resource['divine'].qty; 
 };
 
 
